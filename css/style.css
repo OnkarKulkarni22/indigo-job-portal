@@ -1,0 +1,76 @@
+body {
+  font-family: 'Playfair Display', Georgia, serif;
+  background-color: #fffaf3;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #FF7F11;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffe8c6;
+  border-bottom: 2px solid #ffb347;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #FF7F11;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.values ul {
+  list-style: square inside;
+  padding: 1rem;
+}
+
+footer {
+  background-color: #333;
+  color: #eee;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.sample-form {
+  max-width: 400px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 2px solid #FF7F11;
+  border-radius: 10px;
+  background-color: #fff3e6;
+}
+
+.sample-form input,
+.sample-form button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sample-form button {
+  background-color: #FF7F11;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
