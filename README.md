@@ -1,4 +1,4 @@
-# 🎮 Indigo Software Website
+# 🎮 Indigo Website
 
 A vintage-styled, offline-enabled job and product info portal for Indigo Software – combining blockchain gaming and mascot marketing.
 
