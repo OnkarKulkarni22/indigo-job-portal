@@ -1,44 +1,47 @@
-const express = require('express');
-const mysql = require('mysql2');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const express = require("express");
+const cors = require("cors");
+const mysql = require("mysql");
+const bodyParser = require("body-parser");
 
 const app = express();
-const port = 5000;
-
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to MySQL
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'admin123',
-  database: 'indigo'
+  host: "localhost",
+  user: "root",
+  password: "admin123",
+  database: "indigo"
 });
 
 db.connect(err => {
   if (err) {
-    console.error('Error connecting:', err);
-    return;
+    console.error("Error connecting to DB:", err);
+  } else {
+    console.log("✅ Connected to MySQL database");
   }
-  console.log('✅ Connected to MySQL database');
 });
 
-// API route to save form data
-app.post('/api/sample-request', (req, res) => {
+app.post("/api/sample-request", (req, res) => {
   const { name, email, college } = req.body;
-
-  const sql = 'INSERT INTO samples (name, email, college) VALUES (?, ?, ?)';
+  const sql = "INSERT INTO samples (name, email, college) VALUES (?, ?, ?)";
   db.query(sql, [name, email, college], (err, result) => {
     if (err) {
-      console.error('❌ Error inserting:', err);
-      return res.status(500).json({ error: 'Database error' });
+      console.error("Insert error:", err);
+      return res.status(500).json({ message: "Database error" });
     }
-    res.status(200).json({ message: 'Form submitted successfully!' });
+    res.json({ message: "Sample request submitted successfully!" });
   });
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
+app.get("/api/submissions", (req, res) => {
+  db.query("SELECT * FROM samples ORDER BY created_at DESC", (err, results) => {
+    if (err) {
+      console.error("Retrieve error:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+    res.json(results);
+  });
 });
+
+app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
